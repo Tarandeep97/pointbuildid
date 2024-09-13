@@ -25,12 +25,6 @@ def get_blobs(probs,p=0.5):
     return blobs
 
 
-def smooth_l1_loss(diff_pred_gt, beta=1.0):
-    diff = torch.abs(torch.tensor(diff_pred_gt))
-    loss = torch.where(diff < beta, 0.5 * diff ** 2 / beta, diff - 0.5 * beta)
-    return loss.mean()
-
-
 def find_centroid_pixels(image):    
     non_zero_pixels = non_zero_pixel_positions(image)
     return non_zero_pixels   
@@ -109,10 +103,7 @@ def voronoi_finite_polygons_2d(vor, radius=None):
             if v2 < 0:
                 v1, v2 = v2, v1
             if v1 >= 0:
-                # Finite ridge: already in the region
                 continue
-
-            # Compute the missing endpoint of an infinite ridge
             t = vor.points[p2] - vor.points[p1] 
             t /= np.linalg.norm(t)
             n = np.array([-t[1], t[0]])
@@ -196,7 +187,7 @@ def generate_perp_line(image_shape, point1, point2):
     midpoint = ((point1[0] + point2[0]) / 2, (point1[1] + point2[1]) / 2)
     slope = (point2[1] - point1[1]) / (point2[0] - point1[0])
 
-    perp_slope = -1 / (slope + 1e-7)
+    perp_slope = -1 / (slope + 1e-5)
 
     x_values = np.linspace(0, image_shape[1] - 1, 100)
     y_values = perp_slope * (x_values - midpoint[0]) + midpoint[1]
@@ -228,7 +219,6 @@ def bb_inter_img(gt, img_h, img_w, pseudo_bb, bb_dim=(10,10)):
             rectangle = box(*pseudo_bb[tuple(pt)])
             
         intersection = rectangle.intersection(voronoi_tess)
-
         if not intersection.is_empty:
             intersection_coords = np.array(intersection.exterior.coords)
             poly_path = Path(intersection_coords)
@@ -243,8 +233,6 @@ def bb_inter_img(gt, img_h, img_w, pseudo_bb, bb_dim=(10,10)):
     bb_img[bb_img>=2]=0
     
     return bb_img, voronoi_array
-    
-    
 
 def bb_celoss(points, probs, pseudo_bb, bb_dim=(10, 10)):
     blobs = get_blobs(probs, p=0.5)  
