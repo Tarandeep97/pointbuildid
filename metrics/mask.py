@@ -13,7 +13,7 @@ def count_detected_points(pts, cnts, msk):
         for pt in pts:
             if tmp_msk[int(pt[1]), int(pt[0])] == 1:
                 detected_points += 1
-                break
+                #break
     return detected_points
 
 def pointToImage(pts, shape):
