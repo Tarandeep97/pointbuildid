@@ -1,13 +1,11 @@
 # Point-Supervised Building Identification from Aerial Imagery
+- **Tarandeep Singh**[^1], **Shashank Vatedka** [^2], **Soumya Jana**[^2], **Lakshmi Prasad Natarajan**[^2]
 
 ## Overview
+This repository hosts partial implementations related to the proposed loss functions, metrics, and various other code snippets from our research paper titled "Point-Supervised Building Identification from Aerial Imagery." For access to the complete codebase, please reach out to us via [email](mailto:ai22mtech02004@iith.ac.in) .
 
-This repository contains implementations of the proposed loss functions, metrics, and miscellaneous code associated with our paper, 
-"Point-Supervised Building Identification from Aerial Imagery."
+[^1]: [Department of Artificial Intelligence, IIT Hyderabad](https://ai.iith.ac.in/)
 
-## Authors
+[^2]: [Department of Electrical Engineering, IIT Hyderabad](https://ee.iith.ac.in/)
 
-- Tarandeep Singh, Department of Artificial Intelligence, IIT Hyderabad
-- Shashank Vatedka, Department of Electrical Engineering, IIT Hyderabad
-- Soumya Jana, Department of Electrical Engineering, IIT Hyderabad
-- Lakshmi Prasad Natarajan, Department of Electrical Engineering, IIT Hyderabad
+
