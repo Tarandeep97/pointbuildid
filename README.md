@@ -1,4 +1,4 @@
-# Code snippets for "Point Supervised Building Identification from Aerial Imagery".
+# Point Supervised Building Identification from Aerial Imagery.
 - Tarandeep Singh, Shashank Vatedka, Soumya Jana, Lakshmi Prasad Natarajan
   
 <img src="images/inria_viz_drawio.png">
