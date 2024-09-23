@@ -73,8 +73,8 @@ experiments = [
     {"name": "LC Loss", "dir": "/", "best_epoch": 0},   
     {"name": "Fixed BB 7x7 0.0001", "dir": "/", "best_epoch": 0},
     {"name": "Fixed BB 7x7 0.05", "dir": "/", "best_epoch": 0},
-    {"name": "LC Loss FixedBB 0.0001", "dir": "/", "best_epoch": 0},
-    {"name": "LC Loss FixedBB 0.05", "dir": "/", "best_epoch": 0},
+    {"name": "LC FixedBB 10x10 0.0001", "dir": "/", "best_epoch": 0},
+    {"name": "LC FixedBB 10x10 0.05", "dir": "/", "best_epoch": 0},
 ]
 
 for experiment in experiments:
