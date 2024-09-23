@@ -24,7 +24,6 @@ def get_blobs(probs,p=0.5):
 
     return blobs
 
-
 def find_centroid_pixels(image):    
     non_zero_pixels = non_zero_pixel_positions(image)
     return non_zero_pixels   
@@ -43,32 +42,7 @@ def compute_distances(point, pixel_positions):
 
 def euclidean(point1, point2):
     return distance.euclidean(point1, point2)
-
-def points_within_mask(mask, probs):
-    
-    mask = mask.squeeze()
-    mask = mask.numpy().astype(np.uint8)
-    prob_centroids = find_centroid_pixels(probs.squeeze())
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    
-    deviation = [0]*len(contours)
-    for i in range(len(contours)):
-        contour_image =  np.zeros(probs.squeeze().shape)
-        cand_contour = cv2.drawContours(contour_image, [contours[i]], 0, 1, thickness=cv2.FILLED)
-        cand_contour[cand_contour==255]=1
-        
-        points_in_contour = cand_contour*prob_centroids
-        
-        if (points_in_contour.sum()==0):
-            deviation[i]=abs(1-cand_contour.sum())
-        else:
-            deviation[i]=abs(1-points_in_contour.sum())
-        
-    if len(contours)==0:
-        return prob_centroids.sum()
-    return np.mean(deviation)
-    
-    
+  
 def voronoi_finite_polygons_2d(vor, radius=None):
     
     if vor.points.shape[1] != 2:
