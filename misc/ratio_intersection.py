@@ -7,12 +7,10 @@ import glob
 from tqdm import tqdm 
 
 output_dir = "./output"
-input_dir = "/media/ritesh/Partition4/Taran/mask2points/"
+input_dir = "."
 
-# This is sampled mask path, original masks at mask2points/AerialImageDatasetWVal/train/gt
 img_path = os.path.join(input_dir, "AerialImageDatasetWVal/train/gt")
-img_ids = glob.glob(os.path.join(img_path, "*.tif")) #*tif for original masks
-# print(img_path)
+img_ids = glob.glob(os.path.join(img_path, "*.tif")) 
 
 def calculate_mask_to_outside_fraction(cnts, msk, radius, centroid_outside_counts):
     if not cnts:  
